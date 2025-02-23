@@ -37,8 +37,7 @@
                     <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/pc.png" alt="PC"> PC</a></li>
                     <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/playstation.png" alt="Playstation"> Playstation</a></li>
                     <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/xbox.png" alt="Xbox"> Xbox</a></li>
-                   <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/switch.png" alt="Switch"> Switch</a></li>
-
+                    <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/switch.png" alt="Switch"> Switch</a></li>
                 </ul>
             </nav>
         </div>

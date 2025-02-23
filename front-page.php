@@ -1,10 +1,11 @@
 <?php get_header(); ?>
 
-<main class="container">
-    <!-- Bannière avec overlay incliné -->
-
+<main class="front-page-container"> <!-- ✅ Ajout d'une classe principale pour styliser -->
+    
+    <!-- ✅ BLOC AVEC L'ARRIÈRE-PLAN BLEU -->
     <div class="content-wrapper">
-        <!-- Filtres latéraux -->
+        
+        <!-- ✅ FILTRES LATÉRAUX -->
         <aside class="filters">
             <h3>Genre</h3>
             <ul>
@@ -28,9 +29,9 @@
             </ul>
         </aside>
 
-        <!-- Liste des jeux -->
+        <!-- ✅ LISTE DES JEUX -->
         <section class="games-grid">
-            <h2>Jeux Vidéo</h2>
+            <h2 class="section-title">Jeux Vidéo</h2>
             <div class="grid">
                 <?php
                 $query = new WP_Query(array(
@@ -49,7 +50,7 @@
                 ?>
             </div>
 
-            <!-- Pagination -->
+            <!-- ✅ PAGINATION -->
             <div class="pagination">
                 <?php echo paginate_links(); ?>
             </div>

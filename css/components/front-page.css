@@ -41,21 +41,27 @@
     display: block;
 }
 
-/* === CONTENU PRINCIPAL === */
+/* === CONTENEUR PRINCIPAL === */
 .content-wrapper {
     display: flex;
-    margin-top: 40px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px 5%;
+    gap: 30px;
+    background: #192a56; /* 🔥 Bleu foncé de la maquette */
 }
 
 /* === FILTRES LATÉRAUX === */
 .filters {
     width: 250px;
-    background: #ff5470;
+    background: rgba(255, 74, 98, 0.95);
     padding: 15px;
     border-radius: 10px;
     color: white;
     font-weight: bold;
     margin-right: 30px;
+    position: sticky;
+    top: 100px;
 }
 
 .filters h3 {
@@ -72,42 +78,50 @@
 }
 
 .filters ul li button {
-    background: none;
-    border: none;
+    width: 100%;
+    background: #1b1b1b; /* 🔥 Boutons noirs comme la maquette */
     color: white;
+    border: none;
     font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
     cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease-in-out;
 }
 
 .filters ul li button:hover {
-    text-decoration: underline;
+    background: #333;
+    transform: scale(1.05);
 }
 
 /* === GRILLE DES JEUX === */
 .games-grid {
     flex: 1;
     text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* ✅ Alignement correct des jeux */
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
+/* ✅ Fond des cartes */
 .game-card {
     background: #1b1b2f;
     padding: 10px;
     border-radius: 10px;
 }
 
-.game-card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* === PAGINATION === */
+/* ✅ Pagination */
 .pagination {
     text-align: center;
     margin: 20px 0;
@@ -124,4 +138,29 @@
 
 .pagination a:hover {
     background: var(--primary-color);
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .filters ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .filters ul li {
+        flex: 1 1 calc(50% - 10px);
+    }
 }

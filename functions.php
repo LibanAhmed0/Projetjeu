@@ -85,6 +85,7 @@ function mon_theme_scripts() {
     wp_enqueue_style('single-cpt-style', get_template_directory_uri() . '/css/single-cpt.css', array(), _S_VERSION);
     wp_enqueue_style('variables-style', get_template_directory_uri() . '/css/variables.css', array(), _S_VERSION);
     wp_enqueue_style('contact-style', get_template_directory_uri() . '/css/contact.css', array(), _S_VERSION);
+	wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/components/front-page.css', array(), _S_VERSION);
 
     // Chargement des scripts JS
     wp_enqueue_script('mon-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
@@ -164,4 +165,3 @@ function custom_column_content($column, $post_id) {
     }
 }
 add_action('manage_jeux_video_posts_custom_column', 'custom_column_content', 10, 2);
-
