@@ -114,11 +114,54 @@
     padding: 20px;
 }
 
-/* ✅ Fond des cartes */
+/* ✅ STYLE DES CARTES DE JEUX */
 .game-card {
-    background: #1b1b2f;
+    background: #1b1b2f; /* Fond sombre */
     padding: 10px;
     border-radius: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05); /* Effet zoom au survol */
+}
+
+/* ✅ IMAGE DU JEU */
+.game-thumbnail img {
+    width: 100%;
+    height: 150px; /* Taille uniforme */
+    object-fit: cover; /* Coupe l'image pour éviter la déformation */
+    border-radius: 10px;
+}
+
+/* ✅ TITRE DU JEU */
+.game-title {
+    font-size: 18px;
+    color: white;
+    margin: 10px 0;
+}
+
+/* ✅ PLATEFORME */
+.game-platform {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* ✅ BOUTON "VOIR LE JEU" */
+.btn-game {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #ff4a62;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-game:hover {
+    background: #ff2a45;
 }
 
 /* ✅ Pagination */

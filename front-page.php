@@ -1,11 +1,8 @@
 <?php get_header(); ?>
 
-<main class="front-page-container"> <!-- ✅ Ajout d'une classe principale pour styliser -->
-    
-    <!-- ✅ BLOC AVEC L'ARRIÈRE-PLAN BLEU -->
+<main class="front-page-container">
     <div class="content-wrapper">
         
-        <!-- ✅ FILTRES LATÉRAUX -->
         <aside class="filters">
             <h3>Genre</h3>
             <ul>
@@ -29,19 +26,28 @@
             </ul>
         </aside>
 
-        <!-- ✅ LISTE DES JEUX -->
         <section class="games-grid">
             <h2 class="section-title">Jeux Vidéo</h2>
             <div class="grid">
                 <?php
-                $query = new WP_Query(array(
-                    'post_type'      => 'jeux_video',
+                $query = new WP_Query([
+                    'post_type' => 'jeux_video',
                     'posts_per_page' => 8
-                ));
+                ]);
 
                 if ($query->have_posts()) :
                     while ($query->have_posts()) : $query->the_post();
-                        get_template_part('template-parts/content', 'game');
+                        ?>
+                        <div class="game-card">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php if (has_post_thumbnail()) : ?>
+                                    <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
+                                <?php endif; ?>
+                                <h3><?php the_title(); ?></h3>
+                            </a>
+                            <a class="btn" href="<?php the_permalink(); ?>">Voir le jeu</a>
+                        </div>
+                        <?php
                     endwhile;
                     wp_reset_postdata();
                 else :
@@ -50,7 +56,6 @@
                 ?>
             </div>
 
-            <!-- ✅ PAGINATION -->
             <div class="pagination">
                 <?php echo paginate_links(); ?>
             </div>

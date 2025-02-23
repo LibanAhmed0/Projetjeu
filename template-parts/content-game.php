@@ -5,6 +5,5 @@
         <?php endif; ?>
         <h2><?php the_title(); ?></h2>
     </a>
-    <p><strong>Plateforme :</strong> <?php echo esc_html(SCF::get('plateforme')); ?></p>
     <a class="btn" href="<?php the_permalink(); ?>">Voir le jeu</a>
 </div>
