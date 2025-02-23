@@ -1,0 +1,70 @@
+/* ==============================
+    🎛️ STYLES DES FILTRES
+================================ */
+
+.filters {
+    position: absolute;
+    top: 200px; /* Ajuster la position en fonction du header */
+    left: 5%;
+    width: 220px;
+    background: rgba(255, 74, 98, 0.9); /* Couleur rose de la maquette */
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.filters h2 {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* ✅ Liste des catégories */
+.filters ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filters li {
+    margin-bottom: 10px;
+}
+
+/* ✅ Boutons de filtres */
+.filters a {
+    display: block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.filters a:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ✅ Responsive pour mobile */
+@media screen and (max-width: 768px) {
+    .filters {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        left: 0;
+        top: 0;
+    }
+
+    .filters ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .filters a {
+        padding: 10px;
+    }
+}

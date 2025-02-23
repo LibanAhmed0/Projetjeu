@@ -1,0 +1,67 @@
+@import "../variables.css";
+
+/* === FOOTER === */
+.site-footer {
+    background: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+    padding: 10px;
+}
+
+.footer-column h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Suppression des points de liste */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.site-footer {
+    background: #ff5470;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-columns {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}

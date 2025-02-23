@@ -1,59 +1,53 @@
 <?php
 /**
- * The header for our theme
+ * En-tête du site (header)
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package underscore
+ * @package MonTheme
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-
-	<?php wp_head(); ?>
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'underscore' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$underscore_description = get_bloginfo( 'description', 'display' );
-			if ( $underscore_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $underscore_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+<header id="masthead" class="site-header" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/banner.jpg');">
+    <div class="header-overlay"></div> <!-- ✅ Ombre pour lisibilité -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'underscore' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+    <div class="header-container">
+        <!-- ✅ Logo -->
+        <div class="site-branding">
+            <?php if (has_custom_logo()) {
+                the_custom_logo();
+            } else { ?>
+                <h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a></h1>
+            <?php } ?>
+        </div>
+
+        <!-- ✅ Conteneur du menu pour ajouter une bordure -->
+        <div class="platform-menu-wrapper">
+            <nav class="platform-menu">
+                <ul>
+                    <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/pc.png" alt="PC"> PC</a></li>
+                    <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/playstation.png" alt="Playstation"> Playstation</a></li>
+                    <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/xbox.png" alt="Xbox"> Xbox</a></li>
+                   <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/switch.png" alt="Switch"> Switch</a></li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <!-- ✅ Icônes : Recherche, Panier, Profil -->
+        <div class="header-icons">
+            <a href="#" class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/search.png" alt="Recherche"></a>
+            <a href="#" class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/cart.png" alt="Panier"></a>
+            <a href="#" class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/user.png" alt="Profil"></a>
+        </div>
+    </div>
+</header>

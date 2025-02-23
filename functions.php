@@ -1,178 +1,167 @@
 <?php
 /**
- * underscore functions and definitions
+ * Fonctions du thème WordPress
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package underscore
+ * @package MonTheme
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+if (!defined('_S_VERSION')) {
+    define('_S_VERSION', '1.0.0');
 }
 
 /**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
+ * Configuration du thème
  */
-function underscore_setup() {
-	/*
-		* Make theme available for translation.
-		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on underscore, use a find and replace
-		* to change 'underscore' to the name of your theme in all the template files.
-		*/
-	load_theme_textdomain( 'underscore', get_template_directory() . '/languages' );
+function mon_theme_setup() {
+    // Traductions
+    load_theme_textdomain('mon-theme', get_template_directory() . '/languages');
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+    // Support pour le titre automatique
+    add_theme_support('title-tag');
 
-	/*
-		* Let WordPress manage the document title.
-		* By adding theme support, we declare that this theme does not use a
-		* hard-coded <title> tag in the document head, and expect WordPress to
-		* provide it for us.
-		*/
-	add_theme_support( 'title-tag' );
+    // Activation des images mises en avant
+    add_theme_support('post-thumbnails');
 
-	/*
-		* Enable support for Post Thumbnails on posts and pages.
-		*
-		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		*/
-	add_theme_support( 'post-thumbnails' );
+    // Enregistrement des menus
+    register_nav_menus(array(
+        'menu-principal' => __('Menu Principal', 'mon-theme'),
+    ));
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'underscore' ),
-		)
-	);
+    // Support des formats HTML5
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script'));
 
-	/*
-		* Switch default core markup for search form, comment form, and comments
-		* to output valid HTML5.
-		*/
-	add_theme_support(
-		'html5',
-		array(
-			'search-form',
-			'comment-form',
-			'comment-list',
-			'gallery',
-			'caption',
-			'style',
-			'script',
-		)
-	);
+    // Arrière-plan personnalisé
+    add_theme_support('custom-background', array(
+        'default-color' => 'ffffff',
+        'default-image' => '',
+    ));
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'underscore_custom_background_args',
-			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
-			)
-		)
-	);
+    // Rafraîchissement sélectif des widgets
+    add_theme_support('customize-selective-refresh-widgets');
 
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
+    // Ajout du logo personnalisé
+    add_theme_support('custom-logo', array(
+        'height'      => 250,
+        'width'       => 250,
+        'flex-width'  => true,
+        'flex-height' => true,
+    ));
 }
-add_action( 'after_setup_theme', 'underscore_setup' );
+add_action('after_setup_theme', 'mon_theme_setup');
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
- *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
+ * Définition de la largeur du contenu
  */
-function underscore_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'underscore_content_width', 640 );
+function mon_theme_content_width() {
+    $GLOBALS['content_width'] = apply_filters('mon_theme_content_width', 640);
 }
-add_action( 'after_setup_theme', 'underscore_content_width', 0 );
+add_action('after_setup_theme', 'mon_theme_content_width', 0);
 
 /**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * Enregistrement des widgets (sidebar)
  */
-function underscore_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'underscore' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'underscore' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+function mon_theme_widgets_init() {
+    register_sidebar(array(
+        'name'          => esc_html__('Sidebar', 'mon-theme'),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__('Ajoutez des widgets ici.', 'mon-theme'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
 }
-add_action( 'widgets_init', 'underscore_widgets_init' );
+add_action('widgets_init', 'mon_theme_widgets_init');
 
 /**
- * Enqueue scripts and styles.
+ * Chargement des styles et scripts
  */
-function underscore_scripts() {
-	wp_enqueue_style( 'underscore-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'underscore-style', 'rtl', 'replace' );
+function mon_theme_scripts() {
+    // Chargement des styles CSS
+    wp_enqueue_style('mon-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_enqueue_style('header-style', get_template_directory_uri() . '/css/components/header.css', array(), _S_VERSION);
+    wp_enqueue_style('footer-style', get_template_directory_uri() . '/css/components/footer.css', array(), _S_VERSION);
+    wp_enqueue_style('archive-cpt-style', get_template_directory_uri() . '/css/archive-cpt.css', array(), _S_VERSION);
+    wp_enqueue_style('single-cpt-style', get_template_directory_uri() . '/css/single-cpt.css', array(), _S_VERSION);
+    wp_enqueue_style('variables-style', get_template_directory_uri() . '/css/variables.css', array(), _S_VERSION);
+    wp_enqueue_style('contact-style', get_template_directory_uri() . '/css/contact.css', array(), _S_VERSION);
 
-	wp_enqueue_script( 'underscore-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    // Chargement des scripts JS
+    wp_enqueue_script('mon-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js', array('jquery'), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'underscore_scripts' );
+add_action('wp_enqueue_scripts', 'mon_theme_scripts');
 
 /**
- * Implement the Custom Header feature.
+ * Création du Custom Post Type : Jeux Vidéo
  */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+function create_games_cpt() {
+    register_post_type('jeux_video', array(
+        'label'         => __('Jeux Vidéo', 'mon-theme'),
+        'public'        => true,
+        'show_ui'       => true,
+        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'has_archive'   => true,
+        'rewrite'       => array('slug' => 'jeux-video'),
+        'show_in_rest'  => true,
+    ));
 }
+add_action('init', 'create_games_cpt');
+
+/**
+ * Création des taxonomies personnalisées pour les Jeux Vidéo
+ */
+function create_game_taxonomies() {
+    $taxonomies = array(
+        'editeurs_developpeurs' => 'Éditeurs / Développeurs',
+        'categorie' => 'Catégories',
+        'plateforme' => 'Plateformes',
+        'annee_sortie' => 'Années de sortie',
+    );
+
+    foreach ($taxonomies as $slug => $name) {
+        register_taxonomy($slug, 'jeux_video', array(
+            'labels' => array(
+                'name'          => $name,
+                'singular_name' => rtrim($name, 's'),
+            ),
+            'hierarchical'      => ($slug === 'editeurs_developpeurs' || $slug === 'categorie'),
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'rewrite'           => array('slug' => $slug),
+            'show_in_rest'      => true,
+        ));
+    }
+}
+add_action('init', 'create_game_taxonomies');
+
+/**
+ * Ajout des colonnes personnalisées dans l'administration des Jeux Vidéo
+ */
+function add_custom_columns($columns) {
+    $columns['editeurs_developpeurs'] = 'Éditeurs/Développeurs';
+    $columns['categorie'] = 'Catégories';
+    $columns['plateforme'] = 'Plateformes';
+    $columns['annee_sortie'] = 'Année de sortie';
+    return $columns;
+}
+add_filter('manage_jeux_video_posts_columns', 'add_custom_columns');
+
+function custom_column_content($column, $post_id) {
+    $taxonomies = array('editeurs_developpeurs', 'categorie', 'plateforme', 'annee_sortie');
+
+    if (in_array($column, $taxonomies)) {
+        $terms = get_the_terms($post_id, $column);
+        if (!empty($terms)) {
+            echo esc_html(join(', ', wp_list_pluck($terms, 'name')));
+        } else {
+            echo '—';
+        }
+    }
+}
+add_action('manage_jeux_video_posts_custom_column', 'custom_column_content', 10, 2);
 

@@ -2,33 +2,42 @@
 /**
  * The template for displaying the footer
  *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package underscore
+ * @package MonTheme
  */
-
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'underscore' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'underscore' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'underscore' ), 'underscore', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+<footer id="colophon" class="site-footer">
+    <div class="container">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h4>Informations</h4>
+                <ul>
+                    <li><a href="#">Conditions de vente</a></li>
+                    <li><a href="#">Utiliser une carte cadeau</a></li>
+                    <li><a href="#">Programme d'affiliation</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Service client</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Suivez-nous</h4>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© <?php echo date('Y'); ?> MonSite. Tous droits réservés.</p>
+    </div>
+</footer>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>

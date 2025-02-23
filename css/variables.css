@@ -1,0 +1,17 @@
+/* === VARIABLES GLOBALES === */
+:root {
+    --primary-color: #1b1b2f;
+    --secondary-color: #ff4757;
+    --text-color: #ffffff;
+    --background-color: #f8f9fa;
+    --font-family: 'Arial', sans-serif;
+}
+
+/* === RESET GÉNÉRAL === */
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
