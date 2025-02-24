@@ -152,3 +152,35 @@
     white-space: nowrap; /* Évite les retours à la ligne */
     z-index: -1; /* Met en arrière-plan pour éviter qu’il ne chevauche les filtres */
 }
+/* === SECTION SERVICES === */
+.services {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 5%;
+    background: #000; /* ✅ Fond noir */
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+}
+
+.service-item {
+    max-width: 300px;
+}
+
+.service-item img {
+    width: 50px; /* ✅ Ajuste selon la taille de ton icône */
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #ccc;
+}

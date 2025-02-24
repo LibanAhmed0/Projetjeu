@@ -60,5 +60,23 @@
         </section>
     </div>
 </main>
+<section class="services">
+    <div class="service-item">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/fast.png" alt="Ultra rapide">
+        <h3>Ultra rapide</h3>
+        <p>Clé instantanée</p>
+    </div>
+    <div class="service-item">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/secure.png" alt="Ultra sécurisé">
+        <h3>Ultra Sécurisé</h3>
+        <p>Plus de 10,000 jeux</p>
+    </div>
+    <div class="service-item">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/support.png" alt="Service client">
+        <h3>Service client</h3>
+        <p>Conseillers disponibles 24/7</p>
+    </div>
+</section>
+
 
 <?php get_footer(); ?>

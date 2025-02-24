@@ -35,6 +35,8 @@ function mon_theme_scripts() {
     wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/components/front-page.css', array(), _S_VERSION);
     wp_enqueue_style('single-jeux-style', get_template_directory_uri() . '/css/components/single-jeux_video.css', array(), _S_VERSION);
 
+    
+
     wp_enqueue_script('mon-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js', array('jquery'), _S_VERSION, true);
 

@@ -1,0 +1,85 @@
+/* === TITRE DE L'ARCHIVE === */
+.archive-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.archive-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* === GRILLE DES JEUX === */
+.games-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* === STYLE DES CARTES DE JEUX === */
+.game-card {
+    background: none;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+/* === IMAGE DES JEUX === */
+.game-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* === TITRE DES JEUX === */
+.game-title {
+    font-size: 20px;
+    color: white;
+    margin: 10px 0;
+}
+
+/* === BOUTON "LIRE LA SUITE" === */
+.btn-game {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #ff4a62;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-game:hover {
+    background: #ff2a45;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .game-thumbnail {
+        height: 150px;
+    }
+
+    .archive-title {
+        font-size: 24px;
+    }
+}

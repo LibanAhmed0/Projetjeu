@@ -1,40 +1,36 @@
 <?php
 /**
- * The template for displaying the footer
+ * The template for displaying the footer (juste la partie rose)
  *
  * @package MonTheme
  */
 ?>
 
 <footer id="colophon" class="site-footer">
-    <div class="container">
-        <div class="footer-columns">
-            <div class="footer-column">
-                <h4>Informations</h4>
-                <ul>
-                    <li><a href="#">Conditions de vente</a></li>
-                    <li><a href="#">Utiliser une carte cadeau</a></li>
-                    <li><a href="#">Programme d'affiliation</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Service client</a></li>
-                    <a href="<?php echo site_url('/contact'); ?>">Contact</a>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Suivez-nous</h4>
-                <ul class="social-icons">
-                    <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
+    <div class="container footer-main">
+        <div class="footer-left">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/trustpilot.png" alt="Trustpilot">
         </div>
-        <p class="copyright">© <?php echo date('Y'); ?> MonSite. Tous droits réservés.</p>
+
+        <div class="footer-links">
+            <a href="#">Les conditions de vente</a>
+            <a href="#">Utiliser une carte cadeau</a>
+            <a href="#">Programme d'affiliation</a>
+            <a href="<?php echo site_url('/contact'); ?>">Nous contacter</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/youtube.png" alt="YouTube"></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/discord.png" alt="Discord"></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/x.png" alt="Twitter/X"></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/icons/twitch.png" alt="Twitch"></a>
+        </div>
+
+        <div class="footer-locale">
+            <span>🌍 France | 🇫🇷 Français | 💶 EUR</span>
+        </div>
     </div>
 </footer>
 
