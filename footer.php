@@ -21,7 +21,7 @@
                 <h4>Support</h4>
                 <ul>
                     <li><a href="#">Service client</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <a href="<?php echo site_url('/contact'); ?>">Contact</a>
                     <li><a href="#">FAQ</a></li>
                 </ul>
             </div>

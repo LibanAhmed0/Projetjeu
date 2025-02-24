@@ -35,7 +35,6 @@
 
         <!-- ✅ LISTE DES JEUX -->
         <section class="games-grid">
-            <h2 class="section-title">Jeux Vidéo</h2>
             <div class="grid">
                 <?php
                 $query = new WP_Query([

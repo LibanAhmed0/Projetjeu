@@ -145,3 +145,24 @@ add_action('save_post', 'save_game_custom_fields');
 add_action('add_meta_boxes', function() {
     add_meta_box('game_details', __('Détails du Jeu', 'mon-theme'), 'add_game_custom_fields', 'jeux_video', 'normal', 'high');
 });
+
+function traiter_formulaire_contact() {
+    if (!isset($_POST['nom']) || !isset($_POST['email']) || !isset($_POST['message'])) {
+        wp_die('Tous les champs sont requis.');
+    }
+
+    $nom = sanitize_text_field($_POST['nom']);
+    $email = sanitize_email($_POST['email']);
+    $message = sanitize_textarea_field($_POST['message']);
+
+    $to = get_option('admin_email'); // Envoi à l’admin du site
+    $subject = "Nouveau message de contact de $nom";
+    $headers = "From: $email";
+
+    wp_mail($to, $subject, $message, $headers);
+
+    wp_redirect(home_url('/merci')); // ✅ Redirection après envoi
+    exit;
+}
+add_action('admin_post_envoyer_message', 'traiter_formulaire_contact');
+add_action('admin_post_nopriv_envoyer_message', 'traiter_formulaire_contact');
