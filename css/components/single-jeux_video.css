@@ -1,0 +1,119 @@
+/* === PAGE DÉTAIL D'UN JEU === */
+.single-game {
+    max-width: 800px;
+    margin: 40px auto; /* Ajout de marge pour aérer */
+    padding: 25px;
+    background: none;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* ✅ IMAGE PRINCIPALE DU JEU */
+.game-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Ajout d'espacement */
+}
+
+/* ✅ CONTENU DES INFORMATIONS */
+.game-info {
+    color: white;
+    padding: 20px;
+    text-align: left; /* Alignement à gauche pour plus de lisibilité */
+}
+
+/* ✅ TITRE DU JEU */
+.game-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ✅ SYNOPSIS */
+.game-synopsis {
+    font-size: 18px;
+    color: #ff4a62; /* Rose pour le texte du synopsis */
+    font-weight: bold;
+    text-align: justify; /* Justifier le texte pour un rendu plus propre */
+    margin-bottom: 20px;
+}
+
+/* ✅ INFOS DU JEU */
+.game-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white; /* Texte bien en blanc */
+    line-height: 1.5; /* Espacement pour une lecture agréable */
+}
+
+/* ✅ STYLE DES LABELS */
+.game-info strong {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* ✅ TAXONOMIES & LIENS */
+.single-game a {
+    color: #ff4a62;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.single-game a:hover {
+    color: #ff2a45;
+}
+
+/* ✅ BOUTON "VOIR LE JEU" ET "ACHETER" */
+.btn-game {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #ff4a62;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.btn-game:hover {
+    background: #ff2a45;
+}
+
+/* ✅ BOUTON "RETOUR À L'ACCUEIL" */
+.return-btn {
+    display: block;
+    margin-top: 30px;
+    background: #ff4a62;
+    color: white !important; /* Force le texte en blanc */
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s ease;
+    font-size: 18px;
+}
+
+.return-btn:hover {
+    background: #ff2a45;
+}
+
+/* ✅ RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    .single-game {
+        padding: 15px;
+    }
+
+    .game-info {
+        text-align: center; /* Alignement au centre sur mobile */
+    }
+
+    .game-synopsis {
+        text-align: center;
+    }
+}

@@ -9,9 +9,9 @@ if (!defined('_S_VERSION')) {
     define('_S_VERSION', '1.0.0');
 }
 
-/**
- * Configuration du thème
- */
+/* ==========================
+   CONFIGURATION DU THÈME
+   ========================== */
 function mon_theme_setup() {
     load_theme_textdomain('mon-theme', get_template_directory() . '/languages');
     add_theme_support('title-tag');
@@ -27,36 +27,14 @@ function mon_theme_setup() {
 }
 add_action('after_setup_theme', 'mon_theme_setup');
 
-/**
- * Définition de la largeur du contenu
- */
-function mon_theme_content_width() {
-    $GLOBALS['content_width'] = apply_filters('mon_theme_content_width', 640);
-}
-add_action('after_setup_theme', 'mon_theme_content_width', 0);
-
-/**
- * Enregistrement des widgets (sidebar)
- */
-function mon_theme_widgets_init() {
-    register_sidebar(array(
-        'name' => esc_html__('Sidebar', 'mon-theme'),
-        'id' => 'sidebar-1',
-        'description' => esc_html__('Ajoutez des widgets ici.', 'mon-theme'),
-        'before_widget' => '<section id="%1$s" class="widget %2$s">',
-        'after_widget' => '</section>',
-        'before_title' => '<h2 class="widget-title">',
-        'after_title' => '</h2>',
-    ));
-}
-add_action('widgets_init', 'mon_theme_widgets_init');
-
-/**
- * Chargement des styles et scripts
- */
+/* ==========================
+   CHARGEMENT DES STYLES ET SCRIPTS
+   ========================== */
 function mon_theme_scripts() {
     wp_enqueue_style('mon-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
     wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/components/front-page.css', array(), _S_VERSION);
+    wp_enqueue_style('single-jeux-style', get_template_directory_uri() . '/css/components/single-jeux_video.css', array(), _S_VERSION);
+
     wp_enqueue_script('mon-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
     wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js', array('jquery'), _S_VERSION, true);
 
@@ -66,45 +44,104 @@ function mon_theme_scripts() {
 }
 add_action('wp_enqueue_scripts', 'mon_theme_scripts');
 
-/**
- * Création du Custom Post Type : Jeux Vidéo
- */
+/* ==========================
+   ENREGISTREMENT DES WIDGETS
+   ========================== */
+function mon_theme_widgets_init() {
+    register_sidebar(array(
+        'name'          => esc_html__('Sidebar', 'mon-theme'),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__('Ajoutez des widgets ici.', 'mon-theme'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ));
+}
+add_action('widgets_init', 'mon_theme_widgets_init');
+
+/* ==========================
+   CUSTOM POST TYPE : JEUX VIDÉO
+   ========================== */
 function create_games_cpt() {
     register_post_type('jeux_video', array(
-        'label' => __('Jeux Vidéo', 'mon-theme'),
-        'public' => true,
-        'show_ui' => true,
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
-        'has_archive' => true,
-        'rewrite' => array('slug' => 'jeux-video'),
-        'show_in_rest' => true,
+        'label'         => __('Jeux Vidéo', 'mon-theme'),
+        'public'        => true,
+        'show_ui'       => true,
+        'supports'      => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+        'has_archive'   => true,
+        'rewrite'       => array('slug' => 'jeux-video'),
+        'show_in_rest'  => true,
     ));
 }
 add_action('init', 'create_games_cpt');
 
-/**
- * Création des taxonomies personnalisées pour les Jeux Vidéo
- */
+/* ==========================
+   TAXONOMIES PERSONNALISÉES
+   ========================== */
 function create_game_taxonomies() {
     $taxonomies = array(
         'editeurs_developpeurs' => 'Éditeurs / Développeurs',
-        'categorie' => 'Catégories',
-        'plateforme' => 'Plateformes',
-        'annee_sortie' => 'Années de sortie',
+        'categorie'             => 'Catégories',
+        'plateforme'            => 'Plateformes',
+        'annee_sortie'          => 'Années de sortie',
     );
 
     foreach ($taxonomies as $slug => $name) {
         register_taxonomy($slug, 'jeux_video', array(
-            'labels' => array(
-                'name' => $name,
+            'labels'            => array(
+                'name'          => $name,
                 'singular_name' => rtrim($name, 's'),
             ),
-            'hierarchical' => true,
-            'show_ui' => true,
+            'hierarchical'      => true,
+            'show_ui'           => true,
             'show_admin_column' => true,
-            'rewrite' => array('slug' => $slug),
-            'show_in_rest' => true,
+            'rewrite'           => array('slug' => $slug),
+            'show_in_rest'      => true,
         ));
     }
 }
 add_action('init', 'create_game_taxonomies');
+
+/* ==========================
+   CHAMPS PERSONNALISÉS (Synopsis, Prix, Lien d'achat)
+   ========================== */
+function add_game_custom_fields($post) {
+    $synopsis = get_post_meta($post->ID, 'synopsis', true);
+    $prix = get_post_meta($post->ID, 'prix', true);
+    $lien_achat = get_post_meta($post->ID, 'lien_achat', true);
+    ?>
+    <div class="form-field">
+        <label for="synopsis"><?php _e('Synopsis', 'mon-theme'); ?></label>
+        <textarea id="synopsis" name="synopsis" rows="4" cols="50"><?php echo esc_textarea($synopsis); ?></textarea>
+    </div>
+    <div class="form-field">
+        <label for="prix"><?php _e('Prix (€)', 'mon-theme'); ?></label>
+        <input type="number" id="prix" name="prix" value="<?php echo esc_attr($prix); ?>">
+    </div>
+    <div class="form-field">
+        <label for="lien_achat"><?php _e('Lien d’achat', 'mon-theme'); ?></label>
+        <input type="url" id="lien_achat" name="lien_achat" value="<?php echo esc_url($lien_achat); ?>">
+    </div>
+    <?php
+}
+
+function save_game_custom_fields($post_id) {
+    if (array_key_exists('synopsis', $_POST)) {
+        update_post_meta($post_id, 'synopsis', sanitize_text_field($_POST['synopsis']));
+    }
+    if (array_key_exists('prix', $_POST)) {
+        update_post_meta($post_id, 'prix', sanitize_text_field($_POST['prix']));
+    }
+    if (array_key_exists('lien_achat', $_POST)) {
+        update_post_meta($post_id, 'lien_achat', esc_url($_POST['lien_achat']));
+    }
+}
+add_action('save_post', 'save_game_custom_fields');
+
+/**
+ * Ajout des méta-boxes pour les champs personnalisés
+ */
+add_action('add_meta_boxes', function() {
+    add_meta_box('game_details', __('Détails du Jeu', 'mon-theme'), 'add_game_custom_fields', 'jeux_video', 'normal', 'high');
+});

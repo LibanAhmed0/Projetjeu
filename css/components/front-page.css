@@ -1,46 +1,5 @@
 @import "../variables.css";
 
-/* === HERO (BANNIÈRE) === */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-}
-
-.hero-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color) 30%, transparent 70%);
-    top: 0;
-    left: 0;
-}
-
-.hero-platforms {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 20px;
-    display: flex;
-    gap: 15px;
-}
-
-.hero-platforms span {
-    color: white;
-    font-weight: bold;
-}
-
-.banner-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-}
-
 /* === CONTENEUR PRINCIPAL === */
 .content-wrapper {
     display: flex;
@@ -48,7 +7,7 @@
     justify-content: space-between;
     padding: 40px 5%;
     gap: 30px;
-    background: #192a56; /* 🔥 Bleu foncé de la maquette */
+    background:none
 }
 
 /* === FILTRES LATÉRAUX === */
@@ -66,6 +25,8 @@
 
 .filters h3 {
     margin-bottom: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .filters ul {
@@ -74,17 +35,17 @@
 }
 
 .filters ul li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .filters ul li button {
     width: 100%;
-    background: #1b1b1b; /* 🔥 Boutons noirs comme la maquette */
+    background: #1b1b1b;
     color: white;
     border: none;
     font-size: 16px;
     font-weight: bold;
-    padding: 10px;
+    padding: 12px;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
@@ -100,23 +61,20 @@
 .games-grid {
     flex: 1;
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ✅ Alignement correct des jeux */
+/* ✅ Correction du style pour éviter le fond blanc */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
 /* ✅ STYLE DES CARTES DE JEUX */
 .game-card {
-    background: #1b1b2f; /* Fond sombre */
+    background: transparent; /* Suppression du fond sombre */
     padding: 10px;
     border-radius: 10px;
     text-align: center;
@@ -124,14 +82,14 @@
 }
 
 .game-card:hover {
-    transform: scale(1.05); /* Effet zoom au survol */
+    transform: scale(1.05);
 }
 
 /* ✅ IMAGE DU JEU */
-.game-thumbnail img {
+.game-card img {
     width: 100%;
-    height: 150px; /* Taille uniforme */
-    object-fit: cover; /* Coupe l'image pour éviter la déformation */
+    height: 250px; /* Ajustement de la taille */
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -140,12 +98,6 @@
     font-size: 18px;
     color: white;
     margin: 10px 0;
-}
-
-/* ✅ PLATEFORME */
-.game-platform {
-    color: #ccc;
-    font-size: 14px;
 }
 
 /* ✅ BOUTON "VOIR LE JEU" */
@@ -162,25 +114,6 @@
 
 .btn-game:hover {
     background: #ff2a45;
-}
-
-/* ✅ Pagination */
-.pagination {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.pagination a {
-    color: white;
-    padding: 10px;
-    background: var(--secondary-color);
-    margin: 5px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.pagination a:hover {
-    background: var(--primary-color);
 }
 
 /* === RESPONSIVE === */
@@ -206,4 +139,16 @@
     .filters ul li {
         flex: 1 1 calc(50% - 10px);
     }
+}
+
+/* === LOGO "DIVERSE" EN ARRIÈRE-PLAN === */
+.frontpage-logo {
+    position: absolute;
+    top: 50px; /* Ajuste la hauteur */
+    right: 400px; /* Décale légèrement vers la gauche */
+    transform: rotate(-90deg);
+    font-size: 120px; /* Ajuste la taille */
+    font-weight: bold;
+    white-space: nowrap; /* Évite les retours à la ligne */
+    z-index: -1; /* Met en arrière-plan pour éviter qu’il ne chevauche les filtres */
 }
