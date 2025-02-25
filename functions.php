@@ -34,6 +34,7 @@ function mon_theme_scripts() {
     wp_enqueue_style('mon-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
     wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/components/front-page.css', array(), _S_VERSION);
     wp_enqueue_style('single-jeux-style', get_template_directory_uri() . '/css/components/single-jeux_video.css', array(), _S_VERSION);
+    wp_enqueue_style('single-jeux-style', get_template_directory_uri() . '/css/components/archive-jeux_video.css', array(), _S_VERSION);
 
     
 
